@@ -1,5 +1,12 @@
 <script setup>
-import { Head, Link } from '@inertiajs/inertia-vue3';
+    import { ref } from 'vue';
+    import { Head, Link } from '@inertiajs/inertia-vue3';
+    import { useI18n } from "vue-i18n";
+    import Langs from "../Langs/langs";
+
+const { t,locale } = useI18n();
+const { langs } = Langs();
+
 
 defineProps({
     canLogin: Boolean,
@@ -7,20 +14,51 @@ defineProps({
     laravelVersion: String,
     phpVersion: String,
 });
+const loginLabel = ref(t('auth.login'));
+const showLangs = ref(false);
+
+// Change Language
+const changeLang = (lang) =>  {
+    locale.value = lang;
+    showLangs.value = false;
+}
 </script>
 
 <template>
     <Head title="Welcome" />
 
-    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-        <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-            <Link v-if="$page.props.user" :href="route('dashboard')" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</Link>
+    <div class="relative flex flex-col items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+        <div v-if="canLogin" class="flex absolute top-0 items-center right-0 px-6 py-4 space-x-4">
+            <Link v-if="$page.props.user" :href="route('dashboard')" class="text-sm text-gray-700 dark:text-gray-500 underline">
+                Dashboard
+            </Link>
 
             <template v-else>
-                <Link :href="route('login')" class="text-sm text-gray-700 dark:text-gray-500 underline">Login</Link>
+                <Link :href="route('login')" class="text-sm text-gray-700 dark:text-gray-500 underline">
+                    {{ $t('auth.login') }}
+                </Link>
 
-                <Link v-if="canRegister" :href="route('register')" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</Link>
+                <Link v-if="canRegister" :href="route('register')" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">
+                    {{ $t('auth.register') }}
+                </Link>
             </template>
+
+        <!-- Dil Değiştirme-->
+        <div class="relative text-slate-200">
+        <span @click="showLangs=true" v-text="$t('langs.' + locale)"></span>
+        <div v-if="showLangs" class="absolute flex flex-col">
+            <template v-for="i in langs">
+            <span 
+            @click="changeLang(i.id)"
+            class="p-2 border" 
+            v-if="locale !== i.id"
+            v-text="$t('langs.' + i.id)">
+            </span>
+            </template>
+        </div>
+        
+        </div>
+
         </div>
 
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">

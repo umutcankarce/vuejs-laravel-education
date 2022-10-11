@@ -1,0 +1,12 @@
+{
+    "auth": {
+        "login": "Login",
+        "register": "Register"
+    },
+    "langs": {
+
+        "tr": "Turkish",
+        "en": "English"
+
+    }
+}

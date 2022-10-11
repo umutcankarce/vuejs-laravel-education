@@ -8,8 +8,23 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 
 // Font Awesome Components
-import { FontAwesomeIcon,FontAwesomeLayers,FontAwesomeLayersText } from '@fortawesome/vue-fontawesome';
+import { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText } from '@fortawesome/vue-fontawesome';
 import "./sources/icons";
+
+// i18n
+
+import { createI18n } from "vue-i18n";
+
+import Langs from "./Langs/langs";
+
+const i18n = createI18n({
+    locale: "tr",
+    legacy: false,
+    fallbackLocale: "en",
+    messages: {
+        ...Langs().translates,
+    },
+});
 
 
 const appName = window.document.getElementsByTagName('title')[0].innerText || 'Laravel';
@@ -20,6 +35,7 @@ createInertiaApp({
         import.meta.glob('./Pages/**/*.vue')),
     setup({ el, app, props, plugin }) {
         return createApp({ render: () => h(app, props) })
+            .use(i18n)
             .component('font-awesome-icon', FontAwesomeIcon)
             .component('font-awesome-layers', FontAwesomeLayers)
             .component('font-awesome-layers-text', FontAwesomeLayersText)
