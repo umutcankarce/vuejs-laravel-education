@@ -62,6 +62,24 @@ const changeLang = (lang) =>  {
         </div>
 
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+
+            <!-- Translate Test -->
+            <div class="text-slate-200">
+            <!-- html elementi gösterme v-html -->
+            <!-- <span v-html="$t('moderatorGreatings',{name : 'Umut'})"></span> -->
+
+            <!-- Parametre Göndermek  -->
+            <!-- {{ $t('cart.cartCount',{ itemCount : $t('item',8) })}} -->
+
+            <!-- Date Kullanımı -->
+            <!-- {{  $d(new Date(), 'short')}} -->
+
+            <!-- Number Değer Kullanmak  -->
+            {{ $n(10000, 'percent') }}
+
+             
+            </div>
+
             <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                 <svg
                     viewBox="0 0 651 192"

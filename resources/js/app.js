@@ -21,6 +21,14 @@ const i18n = createI18n({
     locale: "tr",
     legacy: false,
     fallbackLocale: "en",
+    datetimeFormats: {
+        en: Langs().translates.en.datetimeFormats,
+        tr: Langs().translates.tr.datetimeFormats
+    },
+    numberFormats: {
+        en: Langs().translates.en.numberFormats,
+        tr: Langs().translates.tr.numberFormats
+    },
     messages: {
         ...Langs().translates,
     },
