@@ -24,12 +24,16 @@ Route::get('/', function () {
     ]);
 });
 
+Route::post('update-lang',[\App\Http\Controllers\UpdateLangController::class,'update'])->name('update-lang');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
+
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
 });

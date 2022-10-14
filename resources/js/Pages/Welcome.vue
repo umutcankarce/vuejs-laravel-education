@@ -1,8 +1,9 @@
 <script setup>
-    import { ref } from 'vue';
-    import { Head, Link } from '@inertiajs/inertia-vue3';
+    import { ref,onUpdated,onMounted } from 'vue';
+    import { Head, Link,usePage } from '@inertiajs/inertia-vue3';
     import { useI18n } from "vue-i18n";
     import Langs from "../Langs/langs";
+import { Inertia } from '@inertiajs/inertia';
 
 const { t,locale } = useI18n();
 const { langs } = Langs();
@@ -15,12 +16,34 @@ defineProps({
     phpVersion: String,
 });
 const loginLabel = ref(t('auth.login'));
+
 const showLangs = ref(false);
+
+const updateLang = () => { 
+    locale.value = usePage().props.value.lang;
+}
+
+onMounted(() => {
+
+    updateLang();
+
+});
+
+onUpdated(() => {
+
+    updateLang();
+
+});
+
 
 // Change Language
 const changeLang = (lang) =>  {
     locale.value = lang;
     showLangs.value = false;
+
+    Inertia.post(route('update-lang'),{
+        lang : lang
+    });
 }
 </script>
 
