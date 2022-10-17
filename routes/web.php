@@ -23,8 +23,14 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-
+// Update Language
 Route::post('update-lang',[\App\Http\Controllers\UpdateLangController::class,'update'])->name('update-lang');
+
+// Test Route
+
+Route::get('test',function(){
+    return Inertia::render('Test');
+})->name('test');
 
 Route::middleware([
     'auth:sanctum',
