@@ -1,20 +1,31 @@
 <script setup>
 import { Inertia } from '@inertiajs/inertia';
 import { useForm } from '@inertiajs/inertia-vue3';
-import { ref } from 'vue';
+import { ref,computed } from 'vue';
 import { useVuelidate } from '@vuelidate/core'
-import { required, email } from '@vuelidate/validators'
+import { required,minValue,helpers } from '@vuelidate/validators'
+import { useI18n } from 'vue-i18n';
+
+const { t } =  useI18n();
 
 const form = useForm({
     name : '',
-    email : ''
+    email : '',
+   // is_active : null
 })
 
-// Validation Rules 
+const formName = computed(()=>{
+    return form.name;
+});
 
+const min = (params) =>(value) =>  !helpers.req(value) || value > params;
+
+// Validation Rules 
 const rules = ref({
-    name: { required }, // Matches state.name
-    email: { email }, // Matches state.email
+    name: { min : helpers.withMessage(t('validationMessages.minValue',{ value:18 }),min(18)) }, // Matches state.name
+    email: { minValue : helpers.withMessage(t('validationMessages.minValue',{ value:18 }),minValue(18))}, // Matches state.email
+
+    //is_true : { isTrue : helpers.withMessage('Aktif Değil, Lütfen Aktif Yapın',isTrue)  }
 });
 
 const v$ = useVuelidate(rules, form)
@@ -37,7 +48,8 @@ const handleSubmit = async () => {
     <div class="bg-slate-200 max-w-lg m-auto p-10">
     <form @submit.prevent="handleSubmit">
        <div class="flex flex-col space-y-4">
-        <label for="">Ad</label>
+          <!-- Name  -->
+        <label for="">Name</label>
         <input type="text" name="" id="username" v-model="form.name" />
 
         <span class="text-red-500">
@@ -46,7 +58,7 @@ const handleSubmit = async () => {
         </template>
         </span>
 
-
+        <!-- Email  -->
         <label for="">Email</label>
         <input type="text" name="" id="email" v-model="form.email" />
 
@@ -55,9 +67,12 @@ const handleSubmit = async () => {
             {{ error.$message }}
         </template>
         </span>
+
        <button type="submit">Gönder</button>
        </div>
     </form>
+
+    {{ form }}
     </div>
 </template>
 

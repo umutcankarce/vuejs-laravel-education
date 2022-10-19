@@ -53,5 +53,10 @@
             "style": "percent",
             "useGrouping": false
         }
+    },
+    "validationMessages": {
+        "required": "This field is required.",
+        "email": "Your entry is'nt a valid email.",
+        "minValue": "Your entry must be greater then {value}"
     }
 }

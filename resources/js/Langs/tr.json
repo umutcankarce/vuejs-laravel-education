@@ -53,5 +53,10 @@
             "style": "percent",
             "useGrouping": false
         }
+    },
+    "validationMessages": {
+        "required": "Bu Alan Gereklidir.",
+        "email": "Geçerli Bir E-Mail Adresi Giriniz.",
+        "minValue": "Girdiğiniz Değer En Az {value} Olmalıdır."
     }
 }
