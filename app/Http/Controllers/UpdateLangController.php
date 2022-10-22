@@ -11,7 +11,5 @@ class UpdateLangController extends Controller
         session()->put('lang',$request->lang);
         
         return redirect()->back();
-
-
     }
 }
