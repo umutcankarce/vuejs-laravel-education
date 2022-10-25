@@ -1,30 +1,32 @@
 <script setup>
-import {ref} from "vue";
-import { onClickOutside} from "@vueuse/core";
 
- const showModal = ref(false);
-
- const target = ref(null);
- onClickOutside(target, (event) => showModal.value = false)
 </script>
 
 
 <template>
-   <div class="w-screen h-screen bg-slate-100">
-    <!-- Button -->
-    <button @click="showModal = true">Modal Aç</button>
+   <!-- Main Container -->
+   <div class="w-screen h-screen flex bg-slate-200">
+      <!-- Sidebar -->
+      <div class="-ml-[10rem] md:ml-0 md:w-[10rem] md:flex bg-red-300  shrink-0">Sidebar</div>
+      <!-- Content  -->
+      <div class="bg-green-300 w-full">
+         <!-- Top Bar -->
+         <div class="bg-yellow-300 p-2">Top Bar</div>
+         <!-- Content Wrapper -->
+         <div class="p-0 md:p-2">
+            <!-- Header -->
+            <div class="bg-zinc-300 mb-4">
+               Header 
+            </div>
+            <!-- Content -->
+            <div class="bg-white">
+               <button class="bg-red-500 hover:bg-rose-600 active:bg-emerald-500 text-white px-4 py-2 rounded-lg">Buton</button>
+            </div>
 
+         </div>
+      </div>
 
-    <!-- Modal -->
-    <div v-if="showModal" class="w-screen h-screen fixed left-0 top-0 flex justify-center items-center bg-slate-500/25">
-    <div ref="target" class="relative bg-white border p-6 rounded-lg">
-       <!-- Close Button -->
-        <div @click="showModal = false" class="absolute -top-2 -right-2 bg-red-500 p-2 rounded-full w-8 h-8 flex justify-center items-center text-white">
-         X
-        </div>
-        modal
-    </div>
-    </div>
    </div>
+
 </template>
 
