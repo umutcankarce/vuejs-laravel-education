@@ -1,0 +1,21 @@
+.btn {
+    @apply px-4 py-2 rounded-lg;
+    color: blue;
+    margin: 20rem;
+}
+
+.btn-solid {
+    @apply text-white
+}
+
+.btn-solid.btn-green {
+    @apply bg-emerald-500;
+}
+
+.btn-light {
+    @apply border
+}
+
+.btn-light.btn-green {
+    @apply bg-emerald-200 text-emerald-700;
+}
