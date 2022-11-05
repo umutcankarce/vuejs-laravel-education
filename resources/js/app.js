@@ -11,8 +11,10 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText } from '@fortawesome/vue-fontawesome';
 import "./sources/icons";
 
-// i18n
+// Components 
+import TCard from '@/Components/TCard.vue';
 
+// i18n
 import { createI18n } from "vue-i18n";
 
 import Langs from "./Langs/langs";
@@ -47,6 +49,7 @@ createInertiaApp({
             .component('font-awesome-icon', FontAwesomeIcon)
             .component('font-awesome-layers', FontAwesomeLayers)
             .component('font-awesome-layers-text', FontAwesomeLayersText)
+            .component('TCard', TCard)
             .use(plugin)
             .use(ZiggyVue, Ziggy)
             .mount(el);

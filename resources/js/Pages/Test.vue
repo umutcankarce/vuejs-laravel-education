@@ -1,29 +1,39 @@
 <script setup>
-import { useDark, useToggle } from '@vueuse/core'
-
-const isDark = useDark()
-const toggleDark = useToggle(isDark)
+import TA from '@/Components/TA.vue';
+import TB from '@/Components/TB.vue';
 </script>
 
 <template>
 
-   <div class="
-  max-w-[15rem]
-   mx-auto
-   p-10
-   flex
-   flex-grow
-   bg-slate-200
-   dark:bg-slate-700
-   dark:text-slate-100
-   ">
-   <span>Dark Mode</span>
+<TCard>
+<template #title>Başlık</template>
 
-   <button @click="toggleDark()">
-      <font-awesome-icon :icon="'fa-solid '+ (isDark ? 'fa-sun' : 'fa-moon') " />
-   </button>
-      
-   </div>
+<template #description>
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+</template>
+
+<template #footer>
+   devamını oku
+</template>
+</TCard>
+
+<TCard>
+<template #title>Başlık</template>
+
+<template #description>
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+</template>
+
+<template #footer>
+   devamını oku
+</template>
+</TCard>
+<t-a>
+
+</t-a>
+<t-b>
+
+</t-b>
 
 </template>
 
