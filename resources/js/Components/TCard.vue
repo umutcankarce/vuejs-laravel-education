@@ -5,20 +5,20 @@ import { inject } from 'vue';
 const message = inject('message');
 
 defineProps({
-    title : String
+    title : String,
+    modelValue : String
 });
 
 </script>
 
 <template>
-    {{ message }}
 
 <div class="flex flex-col p-2 rounded-lg ">
 <!-- Header -->
-<div class="mb-4" @click="$emit('tiklama',message)">
+<div class="mb-4" @click="$emit('update:modelValue','Yaz Geldi')">
     <h3 class="font-bold">
-        <span v-if="title" v-text="title"></span>
-        <slot v-else name="title"/>
+        <span v-text="modelValue"></span>
+        <slot name="title"/>
     </h3>
 </div>
     <!-- Content -->

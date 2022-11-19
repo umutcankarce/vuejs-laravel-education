@@ -1,29 +1,21 @@
 <script setup>
-import { provide } from 'vue';
+import { provide , ref } from 'vue';
 
-provide('message','Merhaba')
+const message = ref('Selam');
+
+provide('message',message)
 
  const alertInfo = (message) => {
-   alert(message)
+     alert(message)
  }
 </script>
 
 <template>
 
-<t-card @tiklama="alertInfo($event)" title="PHP">
-
-
-</t-card>
-
-<t-card @tiklama="alertInfo($event)" title="Laravel">
-
+<t-card @tiklama="alertInfo($event)" v-model="message">
 
 </t-card>
 
-<t-card @tiklama="alertInfo($event)" title="Vuejs">
-
-
-</t-card>
 
 
 </template>
