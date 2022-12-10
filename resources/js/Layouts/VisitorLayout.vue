@@ -51,7 +51,7 @@
             <!-- Logo -->
             <div class="flex justify-center items-center h-16">
                 <span class="text-xl">
-                    Dashboard
+                    Jetstream Eğitimi
                 </span>
             </div>
 
@@ -63,7 +63,7 @@
                     <!-- Icon -->
                     <font-awesome-icon icon="home" />
                     <!-- Label -->
-                    <span>Pano</span>
+                    <span>Anasayfa</span>
                 </div>
             </div>
 

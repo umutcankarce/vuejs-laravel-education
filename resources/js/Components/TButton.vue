@@ -9,7 +9,7 @@ defineProps({
     },
     color : {
         type:String,
-        default:'blue'
+        default:'green'
     },
     icon : String
 })
