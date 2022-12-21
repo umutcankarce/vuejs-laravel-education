@@ -44,8 +44,9 @@ createInertiaApp({
     resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`,
         import.meta.glob('./Pages/**/*.vue')),
     setup({ el, app, props, plugin }) {
-        return createApp({ render: () => h(app, props) })
-            .use(i18n)
+        const App = createApp({ render: () => h(app, props) })
+        App.config.globalProperties.t = i18n.global.t;
+        return App.use(i18n)
             .component('font-awesome-icon', FontAwesomeIcon)
             .component('font-awesome-layers', FontAwesomeLayers)
             .component('font-awesome-layers-text', FontAwesomeLayersText)
