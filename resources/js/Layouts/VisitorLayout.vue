@@ -67,13 +67,6 @@
                     <!-- Label -->
                     <span>Anasayfa</span>
                 </div>
-                <div
-                    class="text-sm px-4 py-2 hover:bg-slate-600 cursor-pointer space-x-4 hover:pl-6 active:pl-8 transition-all select-none">
-                    <!-- Icon -->
-                    <font-awesome-icon icon="home" />
-                    <!-- Label -->
-                    <span>Buttons</span>
-                </div>
             </div>
 
         </div>
