@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class UpdateLangController extends Controller
 {
+    public function __construct()
+    {
+
+    }
+    
     public function update(Request $request)
     {
         session()->put('lang',$request->lang);
